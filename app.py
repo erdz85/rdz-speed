@@ -162,7 +162,7 @@ elif app_mode == "📈 Athlete Progress":
     selected_athlete = st.selectbox("Select Athlete:", st.session_state.athletes['name'].unique())
     
     matched_athletes = st.session_state.athletes[st.session_state.athletes['name'] == selected_athlete]
-    athlete_id = matched_athletes['id'].values
+    athlete_id = matched_athletes['id'].values[0]
     
     athlete_logs = st.session_state.workout_logs[(st.session_state.workout_logs['athlete_id'] == athlete_id) & (st.session_state.workout_logs['type'] == "20m_fly")]
     
