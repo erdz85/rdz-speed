@@ -190,7 +190,7 @@ elif app_mode == "🤝 4x100m Relay Builder":
     with col2:
         st.subheader("Outgoing Runner (Block)")
         out_athlete = st.selectbox("Select Outgoing:", st.session_state.athletes['name'].unique(), key="out")
-        out_id = st.session_state.athletes[st.session_state.athletes['name'] == out_athlete]['id'].values
+        out_id = st.session_state.athletes[st.session_state.athletes['name'] == out_athlete]['id'].values[0]
         out_query = st.session_state.workout_logs[(st.session_state.workout_logs['athlete_id'] == out_id) & (st.session_state.workout_logs['type'] == "30m_block")]
         out_block = out_query['fat'].min() if not out_query.empty else 4.40
         out_block = st.number_input("30m Block (s)", value=float(out_block))
