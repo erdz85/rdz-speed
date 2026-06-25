@@ -182,7 +182,7 @@ elif app_mode == "🤝 4x100m Relay Builder":
     with col1:
         st.subheader("Incoming Runner (Fly)")
         inc_athlete = st.selectbox("Select Incoming:", st.session_state.athletes['name'].unique(), key="inc")
-        inc_id = st.session_state.athletes[st.session_state.athletes['name'] == inc_athlete]['id'].values
+        inc_id = st.session_state.athletes[st.session_state.athletes['name'] == inc_athlete]['id'].values[0]
         inc_query = st.session_state.workout_logs[(st.session_state.workout_logs['athlete_id'] == inc_id) & (st.session_state.workout_logs['type'] == "20m_fly")]
         inc_fly = inc_query['fat'].min() if not inc_query.empty else 2.30
         inc_fly = st.number_input("20m Fly (s)", value=float(inc_fly))
